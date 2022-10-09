@@ -46,7 +46,7 @@ ENV PATH $M2:$PATH
 
 
 RUN git clone https://github.com/jenkins-docs/simple-java-maven-app.git
-RUN cd simple-java-maven-app/
+WORKDIR simple-java-maven-app/
 RUN mvn -B -DskipTests clean package
-RUN cd target/
-CMD ["java","-java","my-app-1.0-SNAPSHOT.jar"]
+WORKDIR target/
+CMD ["java","-jar","my-app-1.0-SNAPSHOT.jar"]
